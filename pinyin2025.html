@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>漢字拼音查詢</title>
+  <script src="https://cdn.jsdelivr.net/npm/pinyin4js@1.3.13/dist/pinyin4js.js"></script>
+</head>
+<body>
+  <h1>漢字拼音查詢</h1>
+  <input type="text" id="hanzi" placeholder="請輸入漢字">
+  <button onclick="查拼音()">查詢</button>
+  <div id="拼音結果"></div>
+
+  <script>
+    function 查拼音() {
+      var hanzi = document.getElementById("hanzi").value;
+      var pinyin = PinyinHelper.convertToPinyinString(hanzi, '', PinyinFormat.WITH_TONE_MARK);
+      var shengmu = "";
+      var yunmu = "";
+      var shengdiao = "";
+
+      // (這裡需要編寫更詳細的聲母韻母聲調分解邏輯)
+      // 這是一個簡化的示例
+      if (pinyin.length > 0) {
+        shengmu = pinyin[0]; // 假設第一個字母是聲母
+        yunmu = pinyin.substring(1); // 假設剩下的部分是韻母
+        // (需要根據實際拼音規則進行判斷)
+      }
+
+      document.getElementById("拼音結果").innerHTML =
+        "漢字: " + hanzi + "<br>" +
+        "拼音: " + pinyin + "<br>" +
+        "聲母: " + shengmu + "<br>" +
+        "韻母: " + yunmu + "<br>" +
+        "聲調: (需要進一步分析)";
+    }
+  </script>
+</body>
+</html>
